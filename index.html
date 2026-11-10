@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101014">
+
+<title>Táo Gaming VN - Công Cụ</title>
+
+<link rel="icon" href="https://azerst-image-vn.vercel.app/images/Logotaogaming.jpg">
+
+<style>
+
+/* =====================================
+   GARENA FREE FIRE FONT
+===================================== */
+
+@font-face {
+    font-family: "GFF-Latin-Bold";
+    src:
+        url("https://dl.dir.freefiremobile.com/common/web_event/common/fonts/website/GFFLatinW05-Bold.woff2") format("woff2"),
+        url("https://dl.dir.freefiremobile.com/common/web_event/common/fonts/website/GFFLatinW05-Bold.woff") format("woff");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --red: #ff3030;
+    --orange: #ff702b;
+    --bg: #0b0b0f;
+    --panel: #17171d;
+    --white: #ffffff;
+    --gray: #999999;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "GFF-Latin-Bold", sans-serif !important;
+}
+
+body {
+    min-height: 100vh;
+    color: white;
+    background:
+        radial-gradient(ellipse at 50% -15%, #792323 0%, transparent 48%),
+        linear-gradient(145deg, #111116, #08080b 75%);
+    overflow-x: hidden;
+}
+
+/* BACKGROUND */
+
+.background-effects {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+
+    background-image:
+        linear-gradient(#ffffff08 1px, transparent 1px),
+        linear-gradient(90deg, #ffffff08 1px, transparent 1px);
+
+    background-size: 45px 45px;
+}
+
+.background-effects::after {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: #ff2929;
+    filter: blur(150px);
+    opacity: .15;
+    top: 30%;
+    left: 50%;
+}
+
+/* HEADER */
+
+header {
+    padding: 23px 15px;
+    text-align: center;
+    background: #0b0b0feF;
+    border-bottom: 1px solid #ffffff16;
+    backdrop-filter: blur(15px);
+}
+
+.logo {
+    font-size: 34px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: white;
+}
+
+.logo span {
+    color: var(--red);
+}
+
+.header-sub {
+    margin-top: 6px;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #aaa;
+}
+
+/* HERO */
+
+.hero {
+    text-align: center;
+    padding: 55px 15px 35px;
+}
+
+.hero-label {
+    display: inline-block;
+    color: #ff6948;
+    border: 1px solid #ff493b66;
+    background: #ff302015;
+    padding: 9px 17px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+
+    clip-path: polygon(
+        8% 0, 100% 0, 100% 75%,
+        92% 100%, 0 100%, 0 25%
+    );
+}
+
+.hero h1 {
+    font-size: clamp(30px, 7vw, 52px);
+    line-height: 1.2;
+    font-weight: 900;
+}
+
+.hero h1 span {
+    color: var(--red);
+}
+
+.hero p {
+    margin-top: 14px;
+    font-size: 12px;
+    color: #aaa;
+    line-height: 1.9;
+}
+
+/* SEARCH */
+
+.search-area {
+    width: min(550px, 90%);
+    margin: 0 auto 38px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background: #1c1c23;
+    border: 1px solid #ffffff20;
+    padding: 5px;
+    transition: .3s;
+}
+
+.search-box:focus-within {
+    border-color: var(--red);
+    box-shadow: 0 0 20px #ff303025;
+}
+
+.search-icon {
+    padding: 10px 15px;
+    color: var(--orange);
+    font-size: 20px;
+}
+
+.search-box input {
+    width: 100%;
+    min-width: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 12px;
+    color: white;
+    font-size: 12px;
+}
+
+.search-box input::placeholder {
+    color: #777;
+}
+
+/* MAIN */
+
+.container {
+    width: min(950px, 92%);
+    margin: auto;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.section-heading .line {
+    width: 4px;
+    height: 26px;
+    background: linear-gradient(var(--orange), var(--red));
+}
+
+.section-heading h2 {
+    font-size: 21px;
+}
+
+.section-heading small {
+    margin-left: auto;
+    color: #777;
+    font-size: 10px;
+}
+
+/* GRID */
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+/* CARD */
+
+.tool-card {
+    position: relative;
+    min-width: 0;
+    padding: 23px 20px;
+    overflow: hidden;
+
+    background: linear-gradient(145deg, #24242b, #141419);
+    border: 1px solid #ffffff16;
+
+    clip-path: polygon(
+        0 0,
+        93% 0,
+        100% 12%,
+        100% 100%,
+        7% 100%,
+        0 88%
+    );
+
+    transition: .3s;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 35px #ff302025;
+}
+
+.tool-card::before {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: var(--red);
+    filter: blur(85px);
+    opacity: .12;
+    right: -30px;
+    top: -30px;
+}
+
+.card-top {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 18px;
+}
+
+.tool-icon {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+
+    display: grid;
+    place-items: center;
+
+    font-size: 24px;
+
+    background: linear-gradient(145deg, #ff553a, #a91616);
+
+    clip-path: polygon(
+        0 0, 85% 0, 100% 15%,
+        100% 100%, 15% 100%, 0 85%
+    );
+}
+
+.tool-number {
+    color: #ff6349;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.tool-card h3 {
+    font-size: 17px;
+    line-height: 1.5;
+}
+
+.tool-description {
+    font-size: 11px;
+    color: #aaa;
+    line-height: 1.9;
+    min-height: 63px;
+    margin-bottom: 18px;
+}
+
+/* STATUS */
+
+.tool-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 9px;
+    color: #8be6a0;
+    margin-bottom: 15px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    background: #45e77a;
+    border-radius: 50%;
+    box-shadow: 0 0 9px #45e77a;
+}
+
+/* BUTTON */
+
+.access-btn {
+    display: block;
+    width: 100%;
+    padding: 15px 10px;
+
+    text-align: center;
+    text-decoration: none;
+
+    color: white;
+    font-size: 11px;
+    letter-spacing: 1px;
+
+    background: linear-gradient(90deg, #c91d1d, #ff4931);
+
+    clip-path: polygon(
+        0 0, 94% 0, 100% 25%,
+        100% 100%, 6% 100%, 0 75%
+    );
+
+    transition: .3s;
+}
+
+.access-btn:hover {
+    background: linear-gradient(90deg, #ff4931, #ff792f);
+    filter: brightness(1.15);
+}
+
+.access-btn span {
+    margin-left: 8px;
+}
+
+/* EMPTY */
+
+.empty {
+    display: none;
+    text-align: center;
+    padding: 35px;
+    color: #888;
+    font-size: 12px;
+}
+
+/* FOOTER */
+
+footer {
+    margin-top: 65px;
+    padding: 32px 15px;
+    border-top: 1px solid #ffffff15;
+    background: #0b0b0f;
+    text-align: center;
+}
+
+.footer-brand {
+    font-size: 25px;
+    letter-spacing: 2px;
+}
+
+.footer-brand span {
+    color: var(--red);
+}
+
+.footer-text {
+    color: #888;
+    font-size: 10px;
+    line-height: 2;
+    margin-top: 12px;
+}
+
+.tiktok {
+    display: inline-block;
+    margin-top: 13px;
+    color: #ff6350;
+    font-size: 11px;
+    text-decoration: none;
+}
+
+.copyright {
+    margin-top: 20px;
+    font-size: 9px;
+    color: #555;
+    letter-spacing: 1px;
+}
+
+/* MOBILE */
+
+@media(max-width: 600px) {
+
+    .tools-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .hero {
+        padding-top: 40px;
+    }
+
+    .logo {
+        font-size: 29px;
+    }
+
+    .tool-card {
+        padding: 21px 17px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="background-effects"></div>
+
+<header>
+    <div class="logo">
+        TÁO GAMING <span>VN</span>
+    </div>
+
+    <div class="header-sub">
+        OFFICIAL GAMING TOOLS
+    </div>
+</header>
+
+<section class="hero">
+
+    <div class="hero-label">
+        🔥 TÁO GAMING VN PRESENTS
+    </div>
+
+    <h1>
+        CÔNG CỤ <span>FREE FIRE</span>
+    </h1>
+
+    <p>
+        HỆ THỐNG CÔNG CỤ HỖ TRỢ FREE FIRE VIỆT NAM<br>
+        TRUY CẬP NHANH CHÓNG - GIAO DIỆN CHUYÊN NGHIỆP
+    </p>
+
+</section>
+
+<div class="search-area">
+
+    <div class="search-box">
+
+        <span class="search-icon">⌕</span>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="TÌM KIẾM CÔNG CỤ..."
+            autocomplete="off"
+        >
+
+    </div>
+
+</div>
+
+<main class="container">
+
+    <div class="section-heading">
+
+        <div class="line"></div>
+
+        <h2>DANH SÁCH CÔNG CỤ</h2>
+
+        <small id="toolCount">02 TOOLS</small>
+
+    </div>
+
+    <div class="tools-grid" id="toolsGrid"></div>
+
+    <div class="empty" id="emptyMessage">
+        KHÔNG TÌM THẤY CÔNG CỤ PHÙ HỢP!
+    </div>
+
+</main>
+
+<footer>
+
+    <div class="footer-brand">
+        TÁO GAMING <span>VN</span>
+    </div>
+
+    <div class="footer-text">
+        NỀN TẢNG CÔNG CỤ FREE FIRE VIỆT NAM<br>
+        DESIGNED FOR GAMING COMMUNITY
+    </div>
+
+    <a class="tiktok"
+       href="https://www.tiktok.com/@taogamingffvn"
+       target="_blank"
+       rel="noopener noreferrer">
+       ♪ TIKTOK: @TAOGAMINGFFVN
+    </a>
+
+    <div class="copyright">
+        © 2026 TÁO GAMING VN. ALL RIGHTS RESERVED.
+    </div>
+
+</footer>
+
+<script>
+
+/* ==========================================
+   KHU VỰC CHỈNH SỬA CÔNG CỤ
+
+   title       = TIÊU ĐỀ
+   url         = LINK TRUY CẬP
+   description = MÔ TẢ TỰ ĐỘNG
+   icon        = BIỂU TƯỢNG
+========================================== */
+
+const TOOLS = [
+
+    {
+        id: "event",
+
+        title: "CẬP NHẬT SỰ KIỆN FREE FIRE",
+
+        url: "https://ffvntgm-event-freefire.vercel.app/",
+
+        description:
+        "Cập nhật thông tin sự kiện Free Fire Việt Nam. Theo dõi các sự kiện, nội dung mới và thông tin được đăng tải trên hệ thống.",
+
+        icon: "🔥"
+    },
+
+    {
+        id: "diamond",
+
+        title: "TÍNH KIM CƯƠNG FREE FIRE",
+
+        url: "https://tinhkc-game-tgmvn.vercel.app/",
+
+        description:
+        "Công cụ tính kim cương Free Fire. Hỗ trợ tham khảo và tính toán số lượng kim cương theo nhu cầu.",
+
+        icon: "💎"
+    }
+
+];
+
+
+/* ==========================================
+   NHẬN DẠNG LINK
+========================================== */
+
+function normalizeUrl(value) {
+
+    try {
+
+        const url = new URL(value);
+
+        return (
+            url.hostname.toLowerCase() +
+            url.pathname.replace(/\/+$/, "")
+        );
+
+    } catch {
+
+        return value.toLowerCase().trim();
+
+    }
+
+}
+
+function recognizeTool(link) {
+
+    const normalized = normalizeUrl(link);
+
+    return TOOLS.find(tool =>
+        normalizeUrl(tool.url) === normalized
+    );
+
+}
+
+
+/* ==========================================
+   HIỂN THỊ CÔNG CỤ
+========================================== */
+
+const grid = document.getElementById("toolsGrid");
+
+const search = document.getElementById("searchInput");
+
+const empty = document.getElementById("emptyMessage");
+
+const count = document.getElementById("toolCount");
+
+
+function renderTools(keyword = "") {
+
+    grid.innerHTML = "";
+
+    const filtered = TOOLS.filter(tool => {
+
+        const content = (
+
+            tool.title + " " +
+            tool.description + " " +
+            tool.url + " " +
+            tool.id
+
+        ).toLowerCase();
+
+        return content.includes(
+            keyword.toLowerCase().trim()
+        );
+
+    });
+
+    count.textContent =
+        String(filtered.length).padStart(2, "0") + " TOOLS";
+
+    empty.style.display =
+        filtered.length === 0 ? "block" : "none";
+
+
+    filtered.forEach((tool, index) => {
+
+        const card = document.createElement("article");
+
+        card.className = "tool-card";
+
+
+        const top = document.createElement("div");
+
+        top.className = "card-top";
+
+
+        const icon = document.createElement("div");
+
+        icon.className = "tool-icon";
+
+        icon.textContent = tool.icon || "🎮";
+
+
+        const info = document.createElement("div");
+
+
+        const number = document.createElement("div");
+
+        number.className = "tool-number";
+
+        number.textContent =
+            "TGV TOOL / " +
+            String(index + 1).padStart(2, "0");
+
+
+        const title = document.createElement("h3");
+
+        title.textContent = tool.title;
+
+
+        info.append(number, title);
+
+        top.append(icon, info);
+
+
+        const description = document.createElement("p");
+
+        description.className = "tool-description";
+
+        description.textContent = tool.description;
+
+
+        const status = document.createElement("div");
+
+        status.className = "tool-status";
+
+
+        const dot = document.createElement("span");
+
+        dot.className = "status-dot";
+
+
+        const statusText = document.createElement("span");
+
+        statusText.textContent = "LINK ĐÃ ĐƯỢC CẤU HÌNH";
+
+
+        status.append(dot, statusText);
+
+
+        const button = document.createElement("a");
+
+        button.className = "access-btn";
+
+        button.href = tool.url;
+
+        button.target = "_blank";
+
+        button.rel = "noopener noreferrer";
+
+        button.textContent = "TRUY CẬP CÔNG CỤ";
+
+
+        const arrow = document.createElement("span");
+
+        arrow.textContent = "➜";
+
+        button.append(arrow);
+
+
+        card.append(
+            top,
+            description,
+            status,
+            button
+        );
+
+        grid.appendChild(card);
+
+    });
+
+}
+
+
+/* ==========================================
+   TÌM KIẾM
+========================================== */
+
+search.addEventListener("input", function() {
+
+    renderTools(this.value);
+
+});
+
+
+/* ==========================================
+   TỰ ĐỘNG NHẬN DẠNG LINK TRUY CẬP
+
+   ?tool=event
+   ?tool=diamond
+   ?url=https://ffvntgm-event-freefire.vercel.app/
+========================================== */
+
+function detectIncomingLink() {
+
+    const params = new URLSearchParams(
+        window.location.search
+    );
+
+    const toolId = params.get("tool");
+
+    const incomingUrl = params.get("url");
+
+    let detected = null;
+
+
+    if (toolId) {
+
+        detected = TOOLS.find(
+            tool => tool.id === toolId
+        );
+
+    }
+
+
+    if (incomingUrl) {
+
+        detected = recognizeTool(incomingUrl);
+
+    }
+
+
+    if (detected) {
+
+        search.value = detected.title;
+
+        renderTools(detected.title);
+
+        document.title =
+            detected.title + " | Táo Gaming VN";
+
+    }
+
+}
+
+
+/* ==========================================
+   KHỞI CHẠY HỆ THỐNG
+========================================== */
+
+renderTools();
+
+detectIncomingLink();
+
+</script>
+
+</body>
+  </html>
